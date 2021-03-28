@@ -1,0 +1,148 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Ignite Module 2 Documentation",
+        "description": "This is an API Rent",
+        "version": "1.0.0",
+        "contact": {
+            "email": "gustavo@dibai.com.br"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["User"],
+                "summary": "Create a user",
+                "description": "Create a new user",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                  ],
+                  "produces": [
+                    "application/xml",
+                    "application/json"
+                  ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "user name sample",
+                                    "email": "User@email.sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "User already exist"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["User"],
+                "summary": "List all users",
+                "description": "List all users",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                  ],
+                  "produces": [
+                    "application/xml",
+                    "application/json"
+                  ],
+                "parameters": [
+                    {
+                      "in": "query",
+                      "name": "user_id",
+                      "description": "Id of the client to check if user is admin!",
+                      "required": true
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "User already exist"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/admin": {
+            "patch": {
+                "tags": ["User"],
+                "summary": "Make a user admin",
+                "description": "Make a user admin",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                  ],
+                  "produces": [
+                    "application/xml",
+                    "application/json"
+                  ],
+                "parameters": [
+                    {
+                      "in": "path",
+                      "name": "user_id",
+                      "description": "Id of the client to check if user exists!",
+                      "required": true
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "User already exist"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["User"],
+                "summary": "List all users",
+                "description": "List all users",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                  ],
+                  "produces": [
+                    "application/xml",
+                    "application/json"
+                  ],
+                "parameters": [
+                    {
+                      "in": "path",
+                      "name": "user_id",
+                      "description": "Id of the client to check if user exists!",
+                      "required": true
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "User already exist"
+                    }
+                }
+            }
+        }
+    }
+}
